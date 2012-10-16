@@ -20,7 +20,7 @@ before_script:
 
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
-script: rpm -Uvh http://pkgs.repoforge.org/dkms/dkms-2.0.17-1.el5.rf.noarch.rpm
+script: sudo apt-get install rpm && sudo rpm -Uvh http://pkgs.repoforge.org/dkms/dkms-2.0.17-1.el5.rf.noarch.rpm
 
 # configure notifications (email, IRC, campfire etc)
 #notifications:
