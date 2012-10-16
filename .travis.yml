@@ -1,0 +1,32 @@
+# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
+language: php
+
+# list any PHP version you want to test against
+php:
+  # using major version aliases
+
+  # aliased to a recent 5.3.x version
+  - 5.3
+
+# optionally specify a list of environments
+env:
+  - DEBUG=yes
+  - DEBUG=no
+
+# execute any number of scripts before the test run, custom env's are available as variables
+before_script:
+  - if [[ "$DEBUG" == "yes" ]]; then echo "yes: pid is $$">/tmp/travis.log; fi
+  - if [[ "$DEBUG" == "no" ]]; then echo "no: pid is $$">/tmp/travis.log; fi
+
+# omitting "script:" will default to phpunit
+# use the $DB env variable to determine the phpunit.xml to use
+script: rpm -Uvh http://pkgs.repoforge.org/dkms/dkms-2.0.17-1.el5.rf.noarch.rpm
+
+# configure notifications (email, IRC, campfire etc)
+#notifications:
+#  irc: "irc.freenode.org#travis"
+notifications:
+  email:
+    recipients:
+      - taizo.ito@hde.co.jp
+      - taizoster@gmail.com
